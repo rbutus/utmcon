@@ -1,3 +1,4 @@
+setup.py
 utmcon/__init__.py
 utmcon.egg-info/PKG-INFO
 utmcon.egg-info/SOURCES.txt

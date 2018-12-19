@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='utmcon',
-    version='0.27',
+    version='0.28',
     description='Convert UTM to lat long.',
     url='http://github.com/rbutus/utmcon',
     author='Ryan Trigg',

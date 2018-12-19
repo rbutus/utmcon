@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/dist/utmcon-0.27-py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/dist/utmcon-0.27-py3-none-any.whl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/utmcon-0.27.tar.gz" beforeDir="false" afterPath="$PROJECT_DIR$/dist/utmcon-0.27.tar.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utmcon/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/utmcon/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utmcon/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/utmcon/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,8 +20,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utmcon/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
+            <state relative-caret-position="82">
+              <caret line="20" column="16" lean-forward="true" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -42,8 +41,8 @@
       <file leaf-file-name="test_main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="344">
+              <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -83,9 +82,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="555" />
+    <option name="x" value="5" />
     <option name="y" value="23" />
-    <option name="width" value="1314" />
+    <option name="width" value="1641" />
     <option name="height" value="865" />
   </component>
   <component name="ProjectView">
@@ -138,10 +137,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="555" y="23" width="1314" height="865" extended-state="0" />
+    <frame x="5" y="23" width="1641" height="865" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15081206" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12037037" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -180,8 +179,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utmcon/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
+        <state relative-caret-position="82">
+          <caret line="20" column="16" lean-forward="true" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -190,8 +189,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="344">
+          <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

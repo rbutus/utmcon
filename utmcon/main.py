@@ -1,38 +1,95 @@
 import utm
 import pandas as pd
+import os
+from os.path import expanduser
+import sys
+from pandas.errors import ParserError
 
 
 class Utm2latlon():
+    """
+    Inputs a .CSV or Excel file with UTM (easting and northing) coordinates
+    and outputs a .CSV file (..._output.csv) with corresponding latitude and
+    longitude coordinates as new columns.
+    Arguments:
+         file_path: Absolute or relative path of .CSV file
+         zone_number: UTM zone number
+         zone_letter: UTM zone letter
 
-    def __init__(self, file_name, zone_number, zone_letter):
-        self.file_name = file_name
+    """
+
+    def __init__(self, file_path, zone_number, zone_letter):
+        self.file_path = expanduser(file_path)
+        self.dir_, self.file_name = os.path.split(self.file_path)
+        self.basename, self.ext = os.path.splitext(self.file_name)
         self.zone_number = zone_number
         self.zone_letter = zone_letter
-        self.df = pd.read_csv("{}".format(self.file_name))
-        self.lat = "latitude"
-        self.lon = "longitude"
-        self.convert(self.df)
+        self.df = None
+        self.read_file()
+
+    def read_file(self):
+        """
+        Reads CSV or Excel file in a pandas dataframe. Exceptions exist
+        if the file is not found or is not readable by pandas.
+        :return:
+        """
+
+        if self.ext.lower() == ".csv":
+            try:
+                self.df = pd.read_csv("{}".format(self.file_path))
+            except ParserError:
+                print("ERROR: File must be a CSV or Excel file.")
+            except FileNotFoundError:
+                print("ERROR: File does not exist!!!")
+            else:
+                self.convert(self.df)
+        elif (self.ext.lower() == ".xls" or
+              self.ext.lower() == ".xlsx"):
+            try:
+                self.df = pd.read_excel("{}".format(self.file_path))
+            except ParserError:
+                print("ERROR: File must be a CSV or Excel file.")
+            except FileNotFoundError:
+                print("ERROR: File does not exist.")
+            else:
+                self.convert(self.df)
 
     def convert(self, df_convert):
+        """
+        Converts data using the utm package and creates new "latitude" and
+        "longitude" columns within the dataframe.
+        :param df_convert:
+        :return:
+        """
 
-        df_convert[self.lat] = 0
-        df_convert[self.lon] = 0
+        df_convert['latitude'] = 0
+        df_convert['longitude'] = 0
         for index, row in df_convert.iterrows():
             try:
                 easting = row.easting
-            except:
-                print("There's no \"easting\" column.")
-            try:
                 northing = row.northing
-            except:
-                print("There's no \"northing\" column.")
+            except AttributeError:
+                print("Error: File requires \"easting\" and \"northing\" column headings (lower casexxx).")
+                sys.exit()
             utm_lat, utm_lon =\
                 utm.to_latlon(easting, northing, self.zone_number, self.zone_letter)
-            df_convert.loc[index, self.lat] = utm_lat
-            df_convert.loc[index, self.lon] = utm_lon
+            df_convert.loc[index, 'latitude'] = utm_lat
+            df_convert.loc[index, 'longitude'] = utm_lon
         self.write_file(df_convert)
 
     def write_file(self, df_write):
-        df_write.to_csv(self.file_name + "_output.csv", index=False)
+        """
+        Writes dataframe to disk.
+        :param df_write:
+        :return:
+        """
+
+        output_file = os.path.join(self.dir_, self.basename + "_output" + ".csv")
+        df_write.to_csv(output_file, index=False)
+        print("Output: " + output_file)
 
 
+#  Arguments for when the program is run in the command line.
+
+if __name__ == "__main__":
+    output = Utm2latlon(sys.argv[1], int(sys.argv[2]), sys.argv[3])

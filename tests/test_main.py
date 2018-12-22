@@ -18,6 +18,7 @@ def test_convert(temp_file):
     assert 50.150 in inst1.df.latitude.values.round(3)
     assert -122.222 in inst1.df.longitude.values.round(3)
 
+
 @pytest.fixture
 def temp_file_no_easting(tmpdir):
     d = tmpdir.join("data.csv")

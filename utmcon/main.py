@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import utm
 import pandas as pd
 import os
@@ -18,7 +20,7 @@ class Utm2latlon():
 
     """
 
-    def __init__(self, file_path, zone_number, zone_letter):
+    def __init__(self, file_path: str, zone_number: int, zone_letter: str):
         self.file_path = expanduser(file_path)
         self.dir_, self.file_name = os.path.split(self.file_path)
         self.basename, self.ext = os.path.splitext(self.file_name)
@@ -53,6 +55,8 @@ class Utm2latlon():
                 print("ERROR: File does not exist.")
             else:
                 self.convert(self.df)
+        else:
+            print("ERROR: File must be a CSV or Excel file.")
 
     def convert(self, df_convert):
         """
@@ -62,15 +66,13 @@ class Utm2latlon():
         :return:
         """
 
-        df_convert['latitude'] = 0
-        df_convert['longitude'] = 0
         for index, row in df_convert.iterrows():
             try:
                 easting = row.easting
                 northing = row.northing
             except AttributeError:
-                print("Error: File requires \"easting\" and \"northing\" column headings (lower casexxx).")
-                sys.exit()
+                print("Error: File requires \"easting\" and \"northing\" column headings (lower case).")
+                raise
             utm_lat, utm_lon =\
                 utm.to_latlon(easting, northing, self.zone_number, self.zone_letter)
             df_convert.loc[index, 'latitude'] = utm_lat
@@ -92,4 +94,4 @@ class Utm2latlon():
 #  Arguments for when the program is run in the command line.
 
 if __name__ == "__main__":
-    output = Utm2latlon(sys.argv[1], int(sys.argv[2]), sys.argv[3])
+    Utm2latlon(sys.argv[1], int(sys.argv[2]), sys.argv[3])

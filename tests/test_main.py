@@ -55,6 +55,7 @@ def test_readfile_no_easting(temp_file_no_easting):
     with pytest.raises(AttributeError) as e_info:
         Utm2latlon(temp_file_no_easting, 10, "U")
 
+
 #####
 #   Test file with wrong extension.
 #####

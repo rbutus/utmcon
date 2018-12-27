@@ -65,19 +65,17 @@ class Utm2latlon():
         :param df_convert:
         :return:
         """
-
-        for index, row in df_convert.iterrows():
-            try:
+        try:
+            for index, row in df_convert.iterrows():
                 easting = row.easting
                 northing = row.northing
-            except AttributeError:
-                print("Error: File requires \"easting\" and \"northing\" column headings (lower case).")
-                raise
-            utm_lat, utm_lon =\
-                utm.to_latlon(easting, northing, self.zone_number, self.zone_letter)
-            df_convert.loc[index, 'latitude'] = utm_lat
-            df_convert.loc[index, 'longitude'] = utm_lon
-        self.write_file(df_convert)
+                utm_lat, utm_lon =\
+                    utm.to_latlon(easting, northing, self.zone_number, self.zone_letter)
+                df_convert.loc[index, 'latitude'] = utm_lat
+                df_convert.loc[index, 'longitude'] = utm_lon
+            self.write_file(df_convert)
+        except AttributeError:
+            print("Error: File requires \"easting\" and \"northing\" column headings (lower case).")
 
     def write_file(self, df_write):
         """
